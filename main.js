@@ -1,9 +1,9 @@
-import { userInteraction } from './users-interaction'
+import { userInteraction } from './user/user-interaction.js';
 
-const table = document.getElementById('tabelId')
+const table = document.getElementById('tabelId');
 
 function startGame() {
-    userInteraction(table)
+    userInteraction(table);
 }
 
-startGame()
+startGame();
