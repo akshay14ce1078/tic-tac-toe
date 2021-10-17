@@ -2,9 +2,17 @@ import { updateUserTurn } from '../user/user-turn.js';
 
 const statusElement = document.getElementById('current-game-status');
 
+// 0 => match is still going on ; 1 => match is done win/draw
+let GAME_STATUS = 'live';
+
+export const isGameStillOn = () => GAME_STATUS === 'live';
+
+export const isGameFinished = () => GAME_STATUS === 'finish';
+
 export function updateGameStatus(status, lastUser) {
     if (!!status) {
         statusElement.textContent = status;
+        GAME_STATUS = 'finish';
         return;
     }
 
@@ -16,3 +24,6 @@ export function updateGameStatus(status, lastUser) {
         updateUserTurn('X');
     }
 }
+
+// todo
+// show some animation on user win

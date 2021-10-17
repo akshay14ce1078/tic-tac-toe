@@ -51,10 +51,6 @@ export function gameStatusAfterMove(rowPos, colPos, playerValue) {
 
     //check for diagnols
     for (let i = 0; i < 3; i++) {
-        if (matchingCounter === 3) {
-            return `player ${playerValue} wins`;
-        }
-
         if (gameMatrix[i][i] === playerValue) {
             matchingCounter++;
         } else {
@@ -63,13 +59,13 @@ export function gameStatusAfterMove(rowPos, colPos, playerValue) {
         }
     }
 
+    if (matchingCounter === 3) {
+        return `player ${playerValue} wins`;
+    }
+
     // check for cross diagnol
     for (let j = 2, i = 0; j >= 0 && i < 3; j--, i++) {
-        if (matchingCounter === 3) {
-            return `player ${playerValue} wins`;
-        }
-
-        if (gameMatrix[i][j] === playerValue) {
+        if (gameMatrix[j][i] === playerValue) {
             matchingCounter++;
         } else {
             matchingCounter = 0;
@@ -77,6 +73,11 @@ export function gameStatusAfterMove(rowPos, colPos, playerValue) {
         }
     }
 
+    if (matchingCounter === 3) {
+        return `player ${playerValue} wins`;
+    }
+
+    // all moves done then grame is draw
     if (movesCounter === 9) {
         return 'Game Draw';
     }
